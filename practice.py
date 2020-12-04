@@ -178,7 +178,7 @@
 # #d는 숫자 
 # print("나는 %d살입니다." % 20)
 # #c는 한글자 
-# print("Apple dms %c로 시작해요" % "A")
+# print("Apple은 %c로 시작해요" % "A")
 # #s는 문자
 # print("나는 %s을 좋아해요" % "파이썬")
 # print("나는 %s색과 %s색을 좋아해요" % ("파란", "빨강"))
@@ -237,12 +237,18 @@
 # # 리스트 카운트 
 # print(subway.count("유재석"))
 # 정렬 ( 정방향, 역방향 )
-# num_list = [5,4,3,6,7,8,9]
+# num_list = [5, 4, 3, 6, 7, 8, 9]
 # num_list.sort()
 # print(num_list)
 # num_list.reverse()
 # print(num_list)
 # # #리스트 내에 다양한 타입을 함께 기재할 수 있으며, 리스트끼리 합치는 것도 가능하다 
+# combs = []
+# for x in [1,2,3]:
+#     for y in [3,1,4]:
+#         if x != y:
+#             combs.append((x, y))
+# # 결과값 : [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 
 # # 14. dict(사전) : key와 value가 존재함 / key에 대한 중복이 허용되지 않음 
 # cabinet = {3: "kang", 100: "kim"}
@@ -278,6 +284,7 @@
 
 
 # # 15. 튜플 : 리스트와 다르게 내용변경이나 추가 불가 / 속도가 리스트보다 빠르다! 
+# 
 # # 특정한 돈가스 집이 있다고 하자 
 # menu = ("돈까스", "치즈까스")
 # # 값을 출력하는 방법 
@@ -378,12 +385,17 @@
 
 
 # # 17. 자료구조형변경
-# # 리스트 -> 튜플, 리스트 -> 세트, 세트 -> 튜플로 변경 가능 
+# # 세트 -> 리스트, 리스트 -> 튜플, 튜플 -> 세트, 리스트 -> 세트, 세트 -> 튜플로 변경 가능 
 # menu = {"커피", "우유", "주스"}
 # menu = list(menu)
+# print(menu)
+# print(type(menu))
 # menu = tuple(menu)
+# print(type(menu))
+# print(menu)
 # menu = set(menu)
-
+# print(type(menu))
+# print(menu)
 
 # Quiz
 # 당신의 학교에서는 파이썬 코딩 대회를 주최합니다.
@@ -498,7 +510,7 @@
 #         count += 1
 #     else:
 #         print(f"[ ]{index}번째 손님 소요시간 : {time}분")
-        
+        list.
 # print(f"총 탑승 승객 : {count}분")
 # 내가 푸는 방식은 지역변수와 전역변수 개념을 잘 몰라서 못풀었던거네
 # from random import *
