@@ -510,8 +510,10 @@
 #         count += 1
 #     else:
 #         print(f"[ ]{index}번째 손님 소요시간 : {time}분")
-        list.
+
 # print(f"총 탑승 승객 : {count}분")
+
+
 # 내가 푸는 방식은 지역변수와 전역변수 개념을 잘 몰라서 못풀었던거네
 # from random import *
 # # work_time = randrange(5, 51)
@@ -636,5 +638,143 @@
 # std_weight(height, gender)
 
 
-# 22. 표준입출력
+# # 22. 표준입출력
+# #sep : pyhton과 java사이에 콤마를 대신할 수 있음 
+# print("python", "Java", sep=",")
 
+# #end : end의 기본은 줄바꿈인데 문장의 끝부분을 물음표로 바꾸어주라 
+# print("python", "Java", sep=",", end="?")
+
+# import sys
+# print("python", "Java", file=sys.stdout)
+# print("python", "Java", file=sys.stderr)
+
+# # ljust, rjust 출력되는 문자열 정렬방법
+# scores = {"math": 0, "english": 100, "coding": 100}
+# for subject, score in scores.items():
+#     print(subject.ljust(8), str(score).rjust(4), sep=":")
+
+# #zfill(int) : int만큼 공간을 확보하고 값이 없는 공간은 0(숫자)으로 채워주는 함수 
+# # 활용할 수 있는 곳 : 은행 대기순번표 
+# for num in range(1, 21):
+#     print("대기번호 : " + str(num))
+
+# for num in range(1, 21):
+#     print("대기번호 : " + str(num).zfill(3))
+# #input으로 받은 값은 모두 str이니 숫자처리할 때 꼭 type 변경을 진행해야 한다 
+# answer = input("아무값이나 입력하세요:")
+# print("입력하신 값은 " + answer + "입니다.")
+
+
+
+# # 23. 다양한 출력 포맷 
+# # 빈 자리를 빈공간으로 두고 오른쪽 정렬을 하되 총 10자리 공간을 확보 
+# print("{0: >10}".format(500))
+# #양수일땐 +로 표시, 음수일 땐 -로 표시 
+# print("{0: >+10}".format(500))
+# print("{0: >+10}".format(-500))
+# #왼쪽 정렬하고 빈칸으로 _로 채움
+# print("{0:_<10}".format(500))
+# # 3자리 마다 콤마를 찍어주기
+# print("{0:,}".format(1000000000000))
+# # 3자리 마다 콤마를 찍어주기 및 +-부호도 붙이기 
+# print("{0:+,}".format(1000000000000))
+# print("{0:+,}".format(-1000000000000))
+# #3자리 마다 콤마를 찍어주기, 부호도 붙이고, 자릴수 확보하기
+# print("{0:^<+30,}".format(1000000000000))
+# #소수점 출력
+# print("{0:f}".format(5/3))
+# #소수점 특정 자리수 까지만 표시(소수점 3째 자리에서 반올림)
+# print("{0:.2f}".format(5/3))
+
+
+
+# 24. 외부에서 파일 불러오기 
+#w는 덮어쓰기(없다면 파일 생성하기)
+# score_file = open("score.txt", "w", encoding="utf-8")
+# print("math:0", file=score_file)
+# print("english : 50", file=score_file)
+# score_file.close()
+
+#a(append)는 기존에 생성된 파일에 추가하는 것 
+# score_file = open("score.txt", "a", encoding="utf-8")
+# score_file.write("science:100")
+# score_file.write("\ncoding:100")
+# score_file.close()
+
+# #r은 read로 어떤 파일을 읽어오는 것 
+# # 한번에 다 읽는 방법 
+# score_file = open("score.txt", "r", encoding="utf-8")
+# print(score_file.read())
+# score_file.close()
+
+# # 한줄 한줄 읽는 방법 
+# score_file = open("score.txt", "r", encoding="utf-8")
+# print(score_file.readline(), end="")  
+# # 줄별로 읽기 한줄 읽고 커서는 다음 줄로 이동 / end=""가 없다면 한줄씩 띄어서 써짐
+# print(score_file.readline())  # 줄별로 읽기 한줄 읽고 커서는 다음 줄로 이동
+# score_file.close()
+
+# # 몇줄인지 모를때 총 내용 확인 방법 
+# #방법1
+# score_file = open("score.txt", "r", encoding="utf-8")
+# while True:
+#     line = score_file.readline()
+#     if not line:
+#         break
+#     print(line, end="")
+# score_file.close()
+
+# #방법2
+# score_file = open("score.txt", "r", encoding="utf-8")
+# lines = score_file.readlines()
+# for line in lines:
+#     print(line, end="")
+# score_file.close()
+
+# pickle : 프로그램 상에서 사용하고 있는 것을 파일 형태로 다른 사람에게 전달하는 것 
+# import pickle
+# profile_file = open("profile.pickle", "wb") #wb는 쓰기 
+# profile = {"name": "coding", "age": 30, "hobby": ["sdf", "sdfr", "wersdf"]}
+# pickle.dump(profile, profile_file) # 프로필에 있는 정보를 file에 저장하는 것 
+# profile_file.close()
+
+# profile_file = open("profile.pickle", "rb")  # rb는 읽기 
+# profile = pickle.load(profile_file)
+# print(profile)
+# profile_file.close()
+
+# # with 편하게 파일을 읽기 쓰기가 가능하다 
+# import pickle
+# with open("profile.pickle", "rb") as porfile_file:
+#     print(pickle.load(porfile_file))
+
+#with으로 pickle 없이도 파일을 쓰고 읽을 수 있다 
+#매번 close를 해줄 필요가 없어서 좋네요! 
+# with open("studying.txt", "w", encoding="utf-8") as study_file:
+#     study_file.write("나는 파이썬을 다시 정리하고 있습니다. ")
+
+# with open("studying.txt", "r", encoding="utf-8") as study_file:
+#     print(study_file.read())
+
+# Quiz
+# 당신의 회사에서는 매주 1회 작성해야 하는 보고서가 있습니다.
+# 보고서는 항상 아래와 같은 형태로 출력되어야 합니다.
+
+# - x주차 주간보고 -
+# 부서 :
+# 이름 :
+# 업무 요약 :
+# 1주차부터 50주차까지의 보고서 파일을 만드는 프로그램을 작성하시오
+# 조건 : 파일명은 1주차.txt, 2주차.txt 와 같이 만듭니다.
+
+# for x in range(1, 6):
+#     with open(f"{x}주차.txt", "w", encoding="utf-8") as report_file:
+#         report_file.write(f"- {x}주차 주간보고 -")
+#         report_file.write("\n부서 : ")
+#         report_file.write("\n이름 : ")
+#         report_file.write("\n업무 요약 : ")
+
+
+
+#25. class(클래스)
