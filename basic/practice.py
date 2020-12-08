@@ -281,10 +281,17 @@
 # # 전체 삭제 
 # cabinet.clear
 
+# 꼭 리스트를 보면 이 구문을 연습해볼것 
+# # 예) 리스트에 있는 단어가 몇번있는지 확인하여 dict로 출력하기 
+# counts = dict()
+# names = ["qwe", "asd", "zxc", "qwe", "asd", "zxc", "qwe", "asd"]
+# for name in names:
+#     counts[name] = counts.get(name, 0) + 1
+# print(counts)
 
 
 # # 15. 튜플 : 리스트와 다르게 내용변경이나 추가 불가 / 속도가 리스트보다 빠르다! 
-# 
+
 # # 특정한 돈가스 집이 있다고 하자 
 # menu = ("돈까스", "치즈까스")
 # # 값을 출력하는 방법 
@@ -457,6 +464,14 @@
 #     print(f"대기번호 : {waiting_num}")
 # for waiting_num in range(1,6):
 #     print(f"대기번호 : {waiting_num}")
+# # for문을 이용한 평균 구하기 
+# count = 0
+# sum = 0
+# for value in [9, 41, 12, 30, 78, 89]:
+#     count += 1
+#     sum += value
+#     print(count, value, sum)
+# print(count, sum, sum / count)
 
 
 # #20. while
@@ -535,7 +550,16 @@
 
 
 # 21. 함수 
-# 21-1. 함수란 
+# 21-1. return : 함수에게 무엇을 넣으면 어떤것을 반환하는데 그걸 return이라고 한다 
+# return의 역할 : (1)함수호출의 종료 / (2) 함수가 종료됨에 따라 리턴값을 반환함 
+# # 예)
+# def greet():
+#     return "Hello"
+
+# print(greet(), "Glenn") # Hello Glenn이 출력된다 
+
+ 
+# 21-2. 함수란 
 # def deposit(balance, money):
 #     print(f"입금이 완료되었습니다. 잔액은 {balance+money}원 입니다.")
 #     return balance + money
@@ -558,7 +582,7 @@
 # print(f"{commission}   {balance}")
 
 
-# # 21-2. 함수의 기본값 
+# # 21-3. 함수의 기본값 
 # #우리가 프로파일 함수를 만들어보자 
 # def profile(name, age, main_lang):
 #     print(f"name:{name}, age:{age}, lang:{main_lang}")
@@ -573,7 +597,7 @@
 # profile("ㅎ.ㅎ")
 # profile("Kan.G")
 
-# 21-3. 가변인자를 통한 함수 
+# 21-4. 가변인자를 통한 함수 
 # 가변인자 사용이유 : 우리가 사용하는 함수의 인자가 변경되는 경우를 대비하여 사용함 
 
 # #예시1 
@@ -594,7 +618,7 @@
 # profile("sdf", 20, "python", "Java", "C", "C#", "C++")
 # # lang이 증가하여도 함수 변경 없이 그래도 출력되는 것을 볼 수가 있다 
 
-# # 21-4. 전역변수와 지역변수를 사용하는 함수 
+# # 21-5. 전역변수와 지역변수를 사용하는 함수 
 # gun = 20
 # def checkpoint(soliders):
 #     gun = gun - soliders
