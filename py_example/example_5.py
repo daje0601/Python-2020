@@ -1,6 +1,7 @@
 import os
 import requests
 from bs4 import BeautifulSoup
+from babel.numbers import format_currency
 
 os.system("clear")
 url = "https://www.iban.com/currency-codes"
@@ -28,16 +29,17 @@ def change_currency_program(choice1, choice2):
   nation2_after = choice2
   print(f"How many {nation1_before} do you want to convert to {nation2_after}?")
   amount_before = input()
+  amount_before = format_currency(amount_before, nation1_before, locale="ko_KR")
 
   currency_page = f"https://transferwise.com/gb/currency-converter/{nation1_before}-to-{nation2_after}-rate?amount={amount_before}"
 
   currency = requests.get(currency_page)
-  
   currency_data = BeautifulSoup(currency.text, 'html.parser')
 
   amount_after = currency_data.find('span', {'class':'text-success'}).text
 
   complete = float(amount_after) * float(amount_before)
+  complete = format_currency(complete, nation2_after, locale="ko_KR")
   print(f"{nation1_before} {amount_before}is {complete}")
 
 
@@ -72,5 +74,3 @@ for index, country in enumerate(countries):
 
 ask()
 
-
-# print(format_currency(5000, "KRW", locale="ko_KR"))
